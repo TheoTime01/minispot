@@ -26,10 +26,8 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
-        'console_scripts':
-        [
-        'servo_controller_node = quadruped_robot.servo_controller_node:main',
-        'leg_controller = quadruped_robot.leg_controller:main'
-        ]
+        'console_scripts': [
+            'leg_ik_controller = quadruped_control.leg_ik_controller:main',
+        ],
     },
 )

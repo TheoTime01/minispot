@@ -1,0 +1,69 @@
+joints: [
+  'front_left_hip_joint',
+  'front_left_knee_joint',
+  'front_left_ankle_joint',
+  'front_right_hip_joint',
+  'front_right_knee_joint',
+  'front_right_ankle_joint',
+  'rear_left_hip_joint',
+  'rear_left_knee_joint',
+  'rear_left_ankle_joint',
+  'rear_right_hip_joint',
+  'rear_right_knee_joint',
+  'rear_right_ankle_joint'
+]
+
+front_left_hip_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: front_left_hip_joint
+  joint_speed: 1.0
+  motor:
+    id: 1
+    init: 512
+    min: 0
+    max: 1023
+
+front_left_knee_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: front_left_knee_joint
+  joint_speed: 1.0
+  motor:
+    id: 2
+    init: 512
+    min: 0
+    max: 1023
+
+front_left_ankle_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: front_left_ankle_joint
+  joint_speed: 1.0
+  motor:
+    id: 3
+    init: 512
+    min: 0
+    max: 1023
+
+# Repeat for each joint in the quadruped (front_right, rear_left, rear_right)
+front_right_hip_controller:
+  controller:
+    package: dynamixel_controllers
+    module: joint_position_controller
+    type: JointPositionController
+  joint_name: front_right_hip_joint
+  joint_speed: 1.0
+  motor:
+    id: 4
+    init: 512
+    min: 0
+    max: 1023
+
+# Add similar blocks for other joints

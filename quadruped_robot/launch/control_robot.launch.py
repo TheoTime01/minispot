@@ -37,19 +37,16 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': use_sim_time}],
         ),
-        Node(
-            package='quadruped_robot',
-            executable='leg_controller',
-            output='screen'
+       Node(
+            package='controller_manager',
+            executable='spawner.py',
+            arguments=['quadruped_leg_controller'],
         ),
         Node(
-            package='teleop_twist_keyboard',
-            executable='teleop_twist_keyboard',
+            package='quadruped_control',
+            executable='leg_ik_controller',
+            name='leg_ik_controller',
             output='screen',
-            remappings=[
-                ('/cmd_vel', '/keyboard_input')  # Remap to custom topic
-            ],
-            arguments=['--ros-args', '--disable-timestamp']
         ),
                 Node(
             package='rviz2',
