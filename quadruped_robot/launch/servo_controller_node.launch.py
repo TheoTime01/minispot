@@ -37,26 +37,26 @@ def generate_launch_description():
             output='screen',
             parameters=[{'use_sim_time': use_sim_time}],
         ),
+        # Node(
+        #     package='quadruped_robot',
+        #     executable='leg_controller',
+        #     output='screen'
+        # ),
+        # Node(
+        #     package='teleop_twist_keyboard',
+        #     executable='teleop_twist_keyboard',
+        #     output='screen',
+        #     remappings=[
+        #         ('/cmd_vel', '/keyboard_input')  # Remap to custom topic
+        #     ],
+        #     arguments=['--ros-args', '--disable-timestamp']
+        # ),
         Node(
-            package='quadruped_robot',
-            executable='leg_controller',
-            output='screen'
-        ),
-        Node(
-            package='teleop_twist_keyboard',
-            executable='teleop_twist_keyboard',
-            output='screen',
-            remappings=[
-                ('/cmd_vel', '/keyboard_input')  # Remap to custom topic
-            ],
-            arguments=['--ros-args', '--disable-timestamp']
-        ),
-                Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
             output='screen',
-            arguments=['-d', '/home/tototime/ros2_ws/src/minispot/quadruped_robot/rviz/mini_spot.rviz']
+            arguments=['-d', '/home/intel/fiverr/theotime/src/minispot/quadruped_robot/rviz/rviz.rviz']
         )
     ]
 )
