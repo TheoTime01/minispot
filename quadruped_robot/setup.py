@@ -17,6 +17,7 @@ setup(
         (os.path.join('share', package_name, 'urdf'   ), glob('urdf/*')),
         (os.path.join('share', package_name, 'stl'   ), glob('stl/*')),
         (os.path.join('share', package_name, 'meshes'   ), glob('meshes/*')),
+        (os.path.join('share', package_name, 'worlds'   ), glob('worlds/*')),
     ],
 
     install_requires=['setuptools'],
@@ -31,7 +32,9 @@ setup(
         'console_scripts':
         [
         'servo_controller_node = quadruped_robot.servo_controller_node:main',
-        'leg_controller = quadruped_robot.leg_controller:main'
+        'leg_controller = quadruped_robot.leg_controller:main',
+        'virtual_joy_stick = quadruped_robot.virtual_joy_stick:main',
+        'joystick_controller = quadruped_robot.joystick_controller:main'
         ]
     },
 )

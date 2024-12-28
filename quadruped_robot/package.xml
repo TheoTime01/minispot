@@ -6,7 +6,7 @@
   <version>0.0.0</version>
   <description>A ROS 2 package for controlling and simulating a quadruped robot in RViz and using ros2_control.</description>
 
-  <maintainer email="theotime.perrichet@cpe.fr">Theotime Perrichet</maintainer>
+  <maintainer email="jagadeesh.d.pradhani@gmail.com">Jagadeesh Pradhani</maintainer>
   <author email="theotime.perrichet@cpe.fr">Theotime Perrichet</author>
 
   <license>Apache-2.0</license>
