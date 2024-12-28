@@ -293,7 +293,7 @@ void QuadrupedController::publishFootContacts_(bool foot_contacts[4])
 ## Conclusion Controller
 The `quadruped_controller.cpp` file is the core component for controlling the quadruped robot. It efficiently manages the robot’s motion by converting high-level commands into actuator commands while maintaining modularity and extensibility for different environments and configurations.
 
-## Inverse Kinematics: Explanation and Details
+# Inverse Kinematics: Explanation and Details
 
 ## Overview
 Inverse Kinematics (IK) is a mathematical method used to calculate the joint angles required for a robot’s end-effector (in this case, the feet of a quadruped) to reach a desired position in 3D space. This document provides an in-depth explanation of the **inverse kinematics** implementation located in `minispot/champ/include/kinematics/kinematics.h`.
