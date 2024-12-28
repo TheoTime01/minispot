@@ -99,18 +99,53 @@ QuadrupedController::QuadrupedController():
 }
 
 void QuadrupedController::controlLoop_()
-{
+{   
     float target_joint_positions[12];
     geometry::Transformation target_foot_positions[4];
     bool foot_contacts[4];
+    req_vel_old_.linear.x = 0.0;
+    req_vel_old_.linear.y = 0.0;
+    req_vel_old_.angular.z = 0.0;
 
     body_controller_.poseCommand(target_foot_positions, req_pose_);
 
     leg_controller_.velocityCommand(target_foot_positions, req_vel_, rosTimeToChampTime(clock_.now()));
     kinematics_.inverse(target_joint_positions, target_foot_positions);
+    if(req_vel_.linear.x != req_vel_old_.linear.x || req_vel_.linear.y != req_vel_old_.linear.y || req_vel_.linear.z != req_vel_old_.linear.z ) {
+        // Log req_vel_
+        RCLCPP_INFO(this->get_logger(), "req_vel_ - x: %f, y: %f, angular_z: %f", req_vel_.linear.x, req_vel_.linear.y, req_vel_.angular.z);
+
+        // Log req_pose_
+        RCLCPP_INFO(this->get_logger(), "req_pose_ - x: %f, y: %f, z: %f, roll: %f, pitch: %f, yaw: %f", 
+                    req_pose_.position.x, req_pose_.position.y, req_pose_.position.z,
+                    req_pose_.orientation.roll, req_pose_.orientation.pitch, req_pose_.orientation.yaw);
+
+        // Log target_foot_positions
+        RCLCPP_INFO(this->get_logger(), "target_foot_positions - P1: (%f, %f, %f), P2: (%f, %f, %f), P3: (%f, %f, %f), P4: (%f, %f, %f)", 
+                    target_foot_positions[0].X(), target_foot_positions[0].Y(), target_foot_positions[0].Z(),
+                    target_foot_positions[1].X(), target_foot_positions[1].Y(), target_foot_positions[1].Z(),
+                    target_foot_positions[2].X(), target_foot_positions[2].Y(), target_foot_positions[2].Z(),
+                    target_foot_positions[3].X(), target_foot_positions[3].Y(), target_foot_positions[3].Z());
+
+        // Log target_joint_positions
+        RCLCPP_INFO(this->get_logger(), "target_joint_positions - J1: %f, J2: %f, J3: %f, J4: %f, J5: %f, J6: %f, J7: %f, J8: %f, J9: %f, J10: %f, J11: %f, J12: %f",
+                    target_joint_positions[0], target_joint_positions[1], target_joint_positions[2], target_joint_positions[3],
+                    target_joint_positions[4], target_joint_positions[5], target_joint_positions[6], target_joint_positions[7],
+                    target_joint_positions[8], target_joint_positions[9], target_joint_positions[10], target_joint_positions[11]);
+
+        // Log foot_contacts
+        std::string foot_contact_status = "foot_contacts - ";
+        for (size_t i = 0; i < 4; i++) {
+            foot_contact_status += "Foot " + std::to_string(i) + ": " + std::to_string(foot_contacts[i]) + " ";
+        }
+        RCLCPP_INFO(this->get_logger(), "%s", foot_contact_status.c_str());
+    }
+    
+
 
     publishFootContacts_(foot_contacts);
     publishJoints_(target_joint_positions);
+    req_vel_old_ = req_vel_;
 }
 
 void QuadrupedController::cmdVelCallback_(const geometry_msgs::msg::Twist::SharedPtr msg)

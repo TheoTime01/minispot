@@ -25,12 +25,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "quadruped_controller.h"
+#include "IK_Controller.h"
 
 int main(int argc, char** argv )
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<QuadrupedController>());
+  rclcpp::spin(std::make_shared<IK_Controller>());
   rclcpp::shutdown();
   return 0;
 }

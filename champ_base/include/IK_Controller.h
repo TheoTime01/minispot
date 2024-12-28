@@ -25,8 +25,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef QUADRUPED_CONTROLLER_H
-#define QUADRUPED_CONTROLLER_H
+#ifndef IK_CONTROLLER_H
+#define IK_CONTROLLER_H
 
 #include "rclcpp/rclcpp.hpp"
 
@@ -51,7 +51,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <trajectory_msgs/msg/joint_trajectory.hpp>
 #include <trajectory_msgs/msg/joint_trajectory_point.hpp>
 
-class QuadrupedController: public rclcpp::Node
+class IK_Controller: public rclcpp::Node
 {
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_subscription_;
     rclcpp::Subscription<geometry_msgs::msg::Pose>::SharedPtr cmd_pose_subscription_;
@@ -78,6 +78,7 @@ class QuadrupedController: public rclcpp::Node
     std::vector<std::string> joint_names_;
 
     geometry::Transformation target_foot_positions[4];
+    geometry::Transformation target_foot_positions_old[4];
 
     bool publish_foot_contacts_;
     bool publish_joint_states_;
@@ -95,7 +96,7 @@ class QuadrupedController: public rclcpp::Node
     void cmdPoseCallback_(const geometry_msgs::msg::Pose::SharedPtr msg);
 
     public:
-        QuadrupedController();
+        IK_Controller();
 };
 
 #endif

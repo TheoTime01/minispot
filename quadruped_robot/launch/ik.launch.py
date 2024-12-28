@@ -96,7 +96,7 @@ def generate_launch_description():
     )
 
     declare_gazebo = DeclareLaunchArgument(
-        "gazebo", default_value="false", description="If in gazebo"
+        "gazebo", default_value="true", description="If in gazebo"
     )
 
     declare_joint_controller_topic = DeclareLaunchArgument(

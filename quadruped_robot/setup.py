@@ -31,8 +31,6 @@ setup(
     entry_points={
         'console_scripts':
         [
-        'servo_controller_node = quadruped_robot.servo_controller_node:main',
-        'leg_controller = quadruped_robot.leg_controller:main',
         'virtual_joy_stick = quadruped_robot.virtual_joy_stick:main',
         'joystick_controller = quadruped_robot.joystick_controller:main'
         ]
