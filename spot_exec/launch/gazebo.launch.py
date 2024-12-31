@@ -41,7 +41,7 @@ def generate_launch_description():
         default_value=os.path.join(gz_pkg_share, "config/spot_control.yaml"),
     )
     declare_gazebo_world = DeclareLaunchArgument(
-        "world", default_value=os.path.join(gz_pkg_share, "worlds/default.world")
+        "world", default_value=os.path.join(gz_pkg_share, "worlds/1st_floor.world")
     )
     declare_world_init_x = DeclareLaunchArgument("world_init_x", default_value="0.0")
     declare_world_init_y = DeclareLaunchArgument("world_init_y", default_value="0.0")

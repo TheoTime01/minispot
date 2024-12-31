@@ -47,7 +47,7 @@ def generate_launch_description():
 
     
 
-    default_world_path = os.path.join(curr_pkg, "worlds/env.world")
+    default_world_path = os.path.join(curr_pkg, "worlds/1st_floor.world")
 
     declare_use_sim_time = DeclareLaunchArgument(
         "use_sim_time",
