@@ -56,3 +56,6 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 # Involves Inverse kinematics functions
 
+# Camera dependecies
+pip install opencv-python
+sudo apt install ros-humble-cv-bridge
